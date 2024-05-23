@@ -1,5 +1,13 @@
 # LiveFootballWorldCupScoreboard (LFWCS)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=starkeeny_LiveFootballWorldCupScoreboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=starkeeny_LiveFootballWorldCupScoreboard)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=starkeeny_LiveFootballWorldCupScoreboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=starkeeny_LiveFootballWorldCupScoreboard)
+
+
+Repo: https://github.com/starkeeny/LiveFootballWorldCupScoreboard
+CI/CD: https://github.com/starkeeny/LiveFootballWorldCupScoreboard/actions
+Quality: https://sonarcloud.io/project/overview?id=starkeeny_LiveFootballWorldCupScoreboard
+
 ## Guidelines
 
 * KISS: Keep it simple. Follow the requirements and try to implement the simplest solution you can think of that works. Do not forget about edge cases! 
