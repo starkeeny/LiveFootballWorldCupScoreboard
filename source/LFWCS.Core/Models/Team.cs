@@ -4,12 +4,29 @@
 
 namespace LFWCS.Core.Models;
 
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
-
 /// <summary>
 /// Team that is represented on the scoreboard.
 /// </summary>
-/// <remarks>
-/// Initializes a new instance of the <see cref="Team"/> class.
-/// </remarks>
-internal record Team(string Name);
+internal record Team
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Team"/> class.
+    /// </summary>
+    /// <param name="teamName">The team name in plain text.</param>
+    public Team(string teamName)
+    {
+        ArgumentNullException.ThrowIfNull(teamName);
+
+        if (string.IsNullOrWhiteSpace(teamName))
+        {
+            throw new ArgumentOutOfRangeException(nameof(teamName));
+        }
+
+        this.Name = teamName;
+    }
+
+    /// <summary>
+    /// Gets the team's name.
+    /// </summary>
+    public string Name { get; }
+}

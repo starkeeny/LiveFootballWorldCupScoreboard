@@ -67,4 +67,37 @@ public class ModelTests
         actual[0].InProgress.Should().BeTrue();
         actual[0].Score.CountGoals.Should().Be(0);
     }
+
+    [TestMethod]
+    public void Given_RealWorldFootballGameToStore_When_CreatingAMatchWithTeamNameNull_Then_ThrowArgumentNullException()
+    {
+        // Arrange
+        // Act
+        var actual = () => new Match(1, new Team(null!), new Team("Canada"));
+
+        // Assert
+        actual.Should().Throw<ArgumentNullException>();
+    }
+
+    [TestMethod]
+    public void Given_RealWorldFootballGameToStore_When_CreatingAMatchWithTeamNameEmpty_Then_ThrowArgumentOutOfRangeException()
+    {
+        // Arrange
+        // Act
+        var actual = () => new Match(1, new Team(string.Empty), new Team("Canada"));
+
+        // Assert
+        actual.Should().Throw<ArgumentOutOfRangeException>();
+    }
+
+    [TestMethod]
+    public void Given_RealWorldFootballGameToStore_When_CreatingAMatchWithTeamNameWhitespace_Then_ThrowArgumentOutOfRangeException()
+    {
+        // Arrange
+        // Act
+        var actual = () => new Match(1, new Team(" "), new Team("Canada"));
+
+        // Assert
+        actual.Should().Throw<ArgumentOutOfRangeException>();
+    }
 }

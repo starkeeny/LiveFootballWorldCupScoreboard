@@ -4,7 +4,11 @@
 
 namespace LFWCS.Core;
 
+#pragma warning disable SA1000 // Keywords should be spaced correctly / new() feature unknown by stylecop
+
 using LFWCS.Core.Abstractions;
+using LFWCS.Core.Exceptions;
+using LFWCS.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +21,62 @@ using System.Threading.Tasks;
 /// </summary>
 public class ScoreBoardService : IScoreBoardService
 {
+    private readonly Scoreboard scoreboard = new();
+
+    private readonly object nextMatchIdLock = new();
+    private int nextMatchId = 1;
+
     /// <inheritdoc/>
     public void FinishMatch(string homeTeamName, string awayTeamName)
     {
-        throw new NotImplementedException();
+        var match = this.scoreboard.FindMatch(homeTeamName, awayTeamName)
+            ?? throw new MatchNotFoundException(homeTeamName, awayTeamName);
+        match.StopMatch();
+        this.scoreboard.RemoveMatch(match);
     }
 
     /// <inheritdoc/>
     public string GetSummary()
     {
-        throw new NotImplementedException();
+        return string.Join(
+            Environment.NewLine,
+            this.scoreboard.GetMatches().OrderByDescending(x => x.Score.CountGoals).ThenByDescending(x => x.Id).Select(x => $"{x.Home.Name} {x.Score.Home} - {x.Away.Name} {x.Score.Away}"));
     }
 
     /// <inheritdoc/>
     public void StartNewMatch(string homeTeamName, string awayTeamName)
     {
-        throw new NotImplementedException();
+        var id = 0;
+
+        if(this.scoreboard.FindMatch(homeTeamName, awayTeamName) != null)
+        {
+            throw new DuplicateMatchException(homeTeamName, awayTeamName);
+        }
+
+        if(this.scoreboard.FindTeam(homeTeamName) != null)
+        {
+            throw new DuplicateTeamException(homeTeamName);
+        }
+
+        if (this.scoreboard.FindTeam(awayTeamName) != null)
+        {
+            throw new DuplicateTeamException(awayTeamName);
+        }
+
+        lock (this.nextMatchIdLock)
+        {
+            id = this.nextMatchId++;
+        }
+
+        this.scoreboard.AddMatch(new Match(id, new Team(homeTeamName), new Team(awayTeamName)));
     }
 
     /// <inheritdoc/>
     public void UpdateScore(string homeTeamName, int homeScore, string awayTeamName, int awayScore)
     {
-        throw new NotImplementedException();
+        var match = this.scoreboard.FindMatch(homeTeamName, awayTeamName)
+            ?? throw new MatchNotFoundException(homeTeamName, awayTeamName);
+        match.Score.Home = homeScore;
+        match.Score.Away = awayScore;
     }
 }

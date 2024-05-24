@@ -79,7 +79,6 @@ Mexico 0 - Canada 0");
         service.GetSummary().Should().Be("Mexico 0 - Canada 5");
     }
 
-
     [TestMethod]
     public void Given_ScoreBoardServiceWithMatch_When_FinishingAllMatchen_Then_ItShouldNotPrintAScoreBoard()
     {
@@ -186,7 +185,7 @@ Germany 2 - France 2");
         service.UpdateScore("Argentina", 3, "Australia", 1);
 
         service.FinishMatch("Mexico", "Canada");
-        service.StartNewMatch("Spain", "Brazil");
+        service.FinishMatch("Spain", "Brazil");
 
         // Assert
         service.GetSummary().Should().Be(
@@ -228,9 +227,9 @@ Germany 2 - France 2");
 
         // Assert
         service.GetSummary().Should().Be(
-@"Uruguay 6 - Italy 6
-Argentina 3 - Australia 1
-Germany 2 - France 2");
+@"Spain 10 - Brazil 2
+Mexico 0 - Canada 5
+Argentina 3 - Australia 1");
     }
 
     [TestMethod]
@@ -261,6 +260,23 @@ Germany 2 - France 2");
         {
             service.StartNewMatch("Mexico", "Canada");
             service.StartNewMatch("Mexico", "Germany");
+        };
+
+        // Assert
+        actual.Should().Throw<DuplicateTeamException>();
+    }
+
+    [TestMethod]
+    public void Given_ScoreBoardService_When_StartingANewMatchWithAnOccupiedTeamMixHomeAndAway_Then_ItShouldThrow()
+    {
+        // Arrange
+        var service = new ScoreBoardService();
+
+        // Act
+        Action actual = () =>
+        {
+            service.StartNewMatch("Mexico", "Canada");
+            service.StartNewMatch("Germany", "Mexico");
         };
 
         // Assert

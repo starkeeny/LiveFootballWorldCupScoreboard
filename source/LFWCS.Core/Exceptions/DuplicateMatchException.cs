@@ -4,6 +4,8 @@
 
 namespace LFWCS.Core.Exceptions;
 
+#pragma warning disable IDE0290 // Primären Konstruktor verwenden
+
 /// <summary>
 /// Exception if a match is created twice.
 /// </summary>
