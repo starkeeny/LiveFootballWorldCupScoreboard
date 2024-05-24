@@ -9,7 +9,7 @@ namespace LFWCS.Core.Models;
 /// <summary>
 /// The scoreboard that keeps track of its matches.
 /// </summary>
-public class Scoreboard
+internal class Scoreboard
 {
     private readonly List<Match> matches = [];
 

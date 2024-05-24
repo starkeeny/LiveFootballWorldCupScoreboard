@@ -12,4 +12,4 @@ namespace LFWCS.Core.Models;
 /// <remarks>
 /// Initializes a new instance of the <see cref="Team"/> class.
 /// </remarks>
-public record Team(string Name);
+internal record Team(string Name);

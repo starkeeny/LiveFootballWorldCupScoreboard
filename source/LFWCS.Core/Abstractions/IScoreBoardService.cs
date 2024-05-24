@@ -26,10 +26,10 @@ public interface IScoreBoardService
     /// Updates the score based on home and away team as string.
     /// </summary>
     /// <param name="homeTeamName">The home team name as plain text string.</param>
-    /// <param name="awayTeamName">The away team name as plain text string.</param>
     /// <param name="homeScore">The absolute count of goals the home team shot in the current moment.</param>
+    /// <param name="awayTeamName">The away team name as plain text string.</param>
     /// <param name="awayScore">The absolute count of goals the away team shot in the current moment.</param>
-    void UpdateScore(string homeTeamName, string awayTeamName, int homeScore, int awayScore);
+    void UpdateScore(string homeTeamName, int homeScore, string awayTeamName, int awayScore);
 
     /// <summary>
     /// Finish a match identified by home-team + away-team.

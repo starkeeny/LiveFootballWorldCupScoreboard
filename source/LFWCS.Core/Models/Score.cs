@@ -7,7 +7,7 @@ namespace LFWCS.Core.Models;
 /// <summary>
 /// Represents the goals shot between home team and away team.
 /// </summary>
-public record Score
+internal record Score
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Score"/> class.
@@ -17,7 +17,8 @@ public record Score
     /// <remarks>
     /// DataType is kept as int, because we are not 100% aware of special edge cases like
     /// if a game is canceled due to e.g.: hooligan fights there might be special handling
-    /// for the goals. So it was kept as int.
+    /// for the goals. So it was kept as int. Also the reduction of goals is with VAR a
+    /// possible scenario, so we do not check this.
     /// </remarks>
     public Score(int home = 0, int away = 0)
     {

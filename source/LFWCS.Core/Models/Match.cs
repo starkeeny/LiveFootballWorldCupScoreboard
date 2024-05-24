@@ -16,7 +16,7 @@ namespace LFWCS.Core.Models;
 /// </param>
 /// <param name="Home">Gets the home team object.</param>
 /// <param name="Away">Gets the away team object.</param>
-public record Match(int Id, Team Home, Team Away)
+internal record Match(int Id, Team Home, Team Away)
 {
     /// <summary>
     /// Gets the score object responsible for storing the amount of goals.
