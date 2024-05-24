@@ -4,9 +4,9 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=starkeeny_LiveFootballWorldCupScoreboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=starkeeny_LiveFootballWorldCupScoreboard)
 
 
-Repo: https://github.com/starkeeny/LiveFootballWorldCupScoreboard
-CI/CD: https://github.com/starkeeny/LiveFootballWorldCupScoreboard/actions
-Quality: https://sonarcloud.io/project/overview?id=starkeeny_LiveFootballWorldCupScoreboard
+* Repo: https://github.com/starkeeny/LiveFootballWorldCupScoreboard
+* CI/CD: https://github.com/starkeeny/LiveFootballWorldCupScoreboard/actions
+* Quality: https://sonarcloud.io/project/overview?id=starkeeny_LiveFootballWorldCupScoreboard
 
 ## Guidelines
 
