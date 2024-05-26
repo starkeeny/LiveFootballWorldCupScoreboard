@@ -32,6 +32,32 @@ public class ScoreBoardServiceTests
     }
 
     [TestMethod]
+    public void Given_ScoreBoardService_When_StartingANewMatchWithNullAsCountry_Then_ItShouldThrow()
+    {
+        // Arrange
+        var service = new ScoreBoardService();
+
+        // Act
+        var actual = () => service.StartNewMatch(null!, "Canada");
+
+        // Assert
+        actual.Should().Throw<ArgumentNullException>();
+    }
+
+    [TestMethod]
+    public void Given_ScoreBoardService_When_StartingANewMatchWithWhitespaceAsCountry_Then_ItShouldThrow()
+    {
+        // Arrange
+        var service = new ScoreBoardService();
+
+        // Act
+        var actual = () => service.StartNewMatch("\t", "Canada");
+
+        // Assert
+        actual.Should().Throw<ArgumentOutOfRangeException>();
+    }
+
+    [TestMethod]
     public void Given_ScoreBoardService_When_Starting2NewMatches_Then_ItShouldBePrintedCorrectlyInTheSummary()
     {
         // Arrange
@@ -122,15 +148,6 @@ Mexico 0 - Canada 0");
     [TestMethod]
     public void Given_ScoreBoardService_When_StartingSomeMatches_Then_ItShouldBePrintedCorrectlyInTheSummary()
     {
-        /* Example Input:
-
-            a.Mexico 0 - Canada 5
-            b.Spain 10 - Brazil 2
-            c.Germany 2 - France 2
-            d.Uruguay 6 - Italy 6
-            e.Argentina 3 - Australia 1
-        */
-
         // Arrange
         var service = new ScoreBoardService();
 
@@ -159,15 +176,6 @@ Germany 2 - France 2");
     [TestMethod]
     public void Given_ScoreBoardService_When_StartingSomeMatchesAndFinishTheFirstOnes_Then_ItShouldBePrintedCorrectlyInTheSummary()
     {
-        /* Example Input:
-
-            a.Mexico 0 - Canada 5
-            b.Spain 10 - Brazil 2
-            c.Germany 2 - France 2
-            d.Uruguay 6 - Italy 6
-            e.Argentina 3 - Australia 1
-        */
-
         // Arrange
         var service = new ScoreBoardService();
 
@@ -197,15 +205,6 @@ Germany 2 - France 2");
     [TestMethod]
     public void Given_ScoreBoardService_When_StartingSomeMatchesAndFinishSome_Then_ItShouldBePrintedCorrectlyInTheSummary()
     {
-        /* Example Input:
-
-            a.Mexico 0 - Canada 5
-            b.Spain 10 - Brazil 2
-            c.Germany 2 - France 2
-            d.Uruguay 6 - Italy 6
-            e.Argentina 3 - Australia 1
-        */
-
         // Arrange
         var service = new ScoreBoardService();
 

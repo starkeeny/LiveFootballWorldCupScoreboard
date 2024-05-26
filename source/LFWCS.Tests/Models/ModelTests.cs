@@ -59,7 +59,7 @@ public class ModelTests
 
         // Act
         scoreboard.AddMatch(match);
-        var actual = scoreboard.GetMatches();
+        var actual = scoreboard.GetMatches().ToList();
 
         // Assert
         actual.Should().HaveCount(1);
@@ -69,22 +69,22 @@ public class ModelTests
     }
 
     [TestMethod]
-    public void Given_RealWorldFootballGameToStore_When_CreatingAMatchWithTeamNameNull_Then_ThrowArgumentNullException()
+    public void Given_RealWorldFootballGameToStore_When_CreatingATeamWithTeamNameNull_Then_ThrowArgumentNullException()
     {
         // Arrange
         // Act
-        var actual = () => new Match(1, new Team(null!), new Team("Canada"));
+        var actual = () => new Team(null!);
 
         // Assert
         actual.Should().Throw<ArgumentNullException>();
     }
 
     [TestMethod]
-    public void Given_RealWorldFootballGameToStore_When_CreatingAMatchWithTeamNameEmpty_Then_ThrowArgumentOutOfRangeException()
+    public void Given_RealWorldFootballGameToStore_When_CreatingATeamWithTeamNameEmpty_Then_ThrowArgumentOutOfRangeException()
     {
         // Arrange
         // Act
-        var actual = () => new Match(1, new Team(string.Empty), new Team("Canada"));
+        var actual = () => new Team(string.Empty);
 
         // Assert
         actual.Should().Throw<ArgumentOutOfRangeException>();

@@ -40,7 +40,11 @@ public class ScoreBoardService : IScoreBoardService
     {
         return string.Join(
             Environment.NewLine,
-            this.scoreboard.GetMatches().OrderByDescending(x => x.Score.CountGoals).ThenByDescending(x => x.Id).Select(x => $"{x.Home.Name} {x.Score.Home} - {x.Away.Name} {x.Score.Away}"));
+            this.scoreboard
+                .GetMatches()
+                .OrderByDescending(x => x.Score.CountGoals)
+                .ThenByDescending(x => x.Id)
+                .Select(x => $"{x.Home.Name} {x.Score.Home} - {x.Away.Name} {x.Score.Away}"));
     }
 
     /// <inheritdoc/>
@@ -48,7 +52,10 @@ public class ScoreBoardService : IScoreBoardService
     {
         var id = 0;
 
-        if(this.scoreboard.FindMatch(homeTeamName, awayTeamName) != null)
+        var homeTeam = new Team(homeTeamName);
+        var awayTeam = new Team(awayTeamName);
+
+        if (this.scoreboard.FindMatch(homeTeamName, awayTeamName) != null)
         {
             throw new DuplicateMatchException(homeTeamName, awayTeamName);
         }
@@ -63,12 +70,13 @@ public class ScoreBoardService : IScoreBoardService
             throw new DuplicateTeamException(awayTeamName);
         }
 
+        // consume a new Id when all model checks are done to reduce the number of phantom IDs.
         lock (this.nextMatchIdLock)
         {
             id = this.nextMatchId++;
         }
 
-        this.scoreboard.AddMatch(new Match(id, new Team(homeTeamName), new Team(awayTeamName)));
+        this.scoreboard.AddMatch(new Match(id, homeTeam, awayTeam));
     }
 
     /// <inheritdoc/>

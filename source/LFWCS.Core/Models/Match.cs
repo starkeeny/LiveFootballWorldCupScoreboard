@@ -31,6 +31,9 @@ internal record Match(int Id, Team Home, Team Away)
     /// <summary>
     /// Stops a match.
     /// </summary>
+    /// <remarks>
+    /// This implementation prevents that a stopped match can be reopened.
+    /// </remarks>
     public void StopMatch()
     {
         this.InProgress = false;
