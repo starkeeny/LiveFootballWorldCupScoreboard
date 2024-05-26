@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LFWCS.Core", "LFWCS.Core\LFWCS.Core.csproj", "{331BAE48-A59E-4913-8BDA-7A3991981713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LFWCS.Tests", "LFWCS.Tests\LFWCS.Tests.csproj", "{4924B0E4-4478-4281-BB4D-B036C56F7475}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{331BAE48-A59E-4913-8BDA-7A3991981713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331BAE48-A59E-4913-8BDA-7A3991981713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331BAE48-A59E-4913-8BDA-7A3991981713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331BAE48-A59E-4913-8BDA-7A3991981713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4924B0E4-4478-4281-BB4D-B036C56F7475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4924B0E4-4478-4281-BB4D-B036C56F7475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4924B0E4-4478-4281-BB4D-B036C56F7475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4924B0E4-4478-4281-BB4D-B036C56F7475}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69C25CEC-B3DC-4F7E-8393-7401B5C17DD9}
+	EndGlobalSection
+EndGlobal
