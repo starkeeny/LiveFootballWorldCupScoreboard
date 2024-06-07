@@ -36,6 +36,23 @@ public class ScoreBoardService : IScoreBoardService
     }
 
     /// <inheritdoc/>
+    public int GetScoreOfActiveTeam(string teamName)
+    {
+        var match = this.scoreboard.FindTeam(new Team(teamName));
+        if(match == null)
+        {
+            throw new TeamNotFoundException(teamName);
+        }
+
+        if(match.Away.Name == teamName)
+        {
+            return match.Score.Away;
+        }
+
+        return match.Score.Home;
+    }
+
+    /// <inheritdoc/>
     public string GetSummary()
     {
         return string.Join(
@@ -60,12 +77,12 @@ public class ScoreBoardService : IScoreBoardService
             throw new DuplicateMatchException(homeTeamName, awayTeamName);
         }
 
-        if(this.scoreboard.FindTeam(homeTeamName) != null)
+        if(this.scoreboard.FindTeam(homeTeam) != null)
         {
             throw new DuplicateTeamException(homeTeamName);
         }
 
-        if (this.scoreboard.FindTeam(awayTeamName) != null)
+        if (this.scoreboard.FindTeam(awayTeam) != null)
         {
             throw new DuplicateTeamException(awayTeamName);
         }

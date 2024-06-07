@@ -44,4 +44,12 @@ public interface IScoreBoardService
     /// </summary>
     /// <returns>The rendered score board as string.</returns>
     string GetSummary();
+
+    /// <summary>
+    /// Get the score of an active team playing in a game.
+    /// Only the score of the team handed over in the arguments will be returned.
+    /// </summary>
+    /// <param name="teamName">Active team name to query.</param>
+    /// <returns>The amount of goals shot in the current active game.</returns>
+    int GetScoreOfActiveTeam(string teamName);
 }

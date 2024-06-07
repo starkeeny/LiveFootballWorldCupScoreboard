@@ -53,10 +53,10 @@ internal class Scoreboard
     /// <summary>
     /// Finds a match based on a related team name.
     /// </summary>
-    /// <param name="teamName">The team name as plain text string.</param>
+    /// <param name="team">The team object.</param>
     /// <returns>The match object or null.</returns>
-    public Match? FindTeam(string teamName)
-        => this.matches.FirstOrDefault(x => x.Value.Home.Name == teamName || x.Value.Away.Name == teamName).Value;
+    public Match? FindTeam(Team team)
+        => this.matches.FirstOrDefault(x => x.Value.Home.Name == team.Name || x.Value.Away.Name == team.Name).Value;
 
     /// <summary>
     /// Returns all stored matches.
