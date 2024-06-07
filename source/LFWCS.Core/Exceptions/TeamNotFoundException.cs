@@ -1,4 +1,4 @@
-﻿// <copyright file="TeamNotFound.cs" company="DK">
+﻿// <copyright file="TeamNotFoundException.cs" company="DK">
 // Copyright (c) Daniel Kienböck. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 // </copyright>
 
